@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Landing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #00b894;
+            --light: #ffffff;
+            --dark: #000000;
+            --gray: #64748b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: var(--dark); }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 7vw;
+            background: var(--primary);
+            color: #fff;
+        }
+        .navbar .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .navbar nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .navbar nav a { color: #fff; font-size: 1.1em; transition: color 0.2s; }
+        .navbar nav a:hover { color: var(--accent); }
+        .navbar .cta-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 26px;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 20px;
+            transition: background 0.2s;
+        }
+        .navbar .cta-btn:hover { background: #019170; }
+        /* Banner */
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 7vw 40px 7vw;
+            background: linear-gradient(120deg, #e0f7fa 60%, #fff 100%);
+            flex-wrap: wrap;
+        }
+        .banner-content {
+            flex: 1 1 350px;
+            min-width: 300px;
+            margin-right: 40px;
+        }
+        .banner-content h1 {
+            font-size: 2.7em;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        .banner-content p {
+            font-size: 1.2em;
+            margin-bottom: 24px;
+            color: var(--gray);
+        }
+        .banner-content .banner-btn {
+            background: var(--accent);
+            color: #e8e5e5;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .banner-content .banner-btn:hover { background: #019170; }
+        .banner-img {
+            flex: 1 1 320px;
+            min-width: 260px;
+            display: flex;
+            justify-content: center;
+        }
+        .banner-img img {
+            max-width: 350px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(30,41,59,0.12);
+        }
+        /* Our Client */
+        .clients {
+            padding: 40px 7vw 20px 7vw;
+            background: #dedede;
+        }
+        .clients-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        .clients-logos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            justify-items: center;
+        }
+        .clients-logos img {
+            width: 90px;
+            height: 50px;
+            object-fit: contain;
+            filter: grayscale(1);
+            transition: filter 0.2s;
+        }
+        .clients-logos img:hover { filter: grayscale(0); }
+        /* Power of Blockchain */
+        .power-section {
+            padding: 50px 7vw 30px 7vw;
+            background: var(--light);
+        }
+        .power-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .power-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .power-item {
+            background: #454040;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+            padding: 28px 18px;
+            text-align: center;
+        }
+        .power-item img {
+            width: 48px;
+            margin-bottom: 14px;
+        }
+        .power-item h3 {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        .power-item p {
+            color: var(--gray);
+            font-size: 1em;
+        }
+        /* Helping Blockchain */
+        .help-section {
+            padding: 50px 7vw 30px 7vw;
+            background: #f1f5f9;
+        }
+        .help-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .help-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .help-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+            padding: 28px 18px;
+            text-align: center;
+        }
+        .help-card img {
+            width: 48px;
+            margin-bottom: 14px;
+        }
+        .help-card h4 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        .help-card p {
+            color: var(--gray);
+            font-size: 1em;
+        }
+        /* Blockchain Future */
+        .future-section {
+            padding: 50px 7vw 30px 7vw;
+            background: #fff;
+        }
+        .future-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .future-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .future-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+            cursor: pointer;
+        }
+        .future-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .future-card .future-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(30,41,59,0.7);
+            color: #fff;
+            padding: 18px 12px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+        .future-card:hover .future-text {
+            background: var(--accent);
+            color: #fff;
+        }
+        /* Contact Us */
+        .contact-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 50px 7vw 30px 7vw;
+            background: var(--light);
+            flex-wrap: wrap;
+        }
+        .contact-img {
+            flex: 1 1 300px;
+            min-width: 220px;
+            display: flex;
+            justify-content: center;
+        }
+        .contact-img img {
+            max-width: 260px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(30,41,59,0.12);
+        }
+        .contact-form {
+            flex: 1 1 340px;
+            min-width: 260px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,41,59,0.07);
+            padding: 28px 22px;
+        }
+        .contact-form h3 {
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1em;
+            background: #f8fafc;
+        }
+        .contact-form textarea { min-height: 80px; }
+        .contact-form button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .contact-form button:hover { background: #019170; }
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: #fff;
+            padding: 36px 7vw 18px 7vw;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .footer-logo {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .footer-desc {
+            color: #cbd5e1;
+            margin-bottom: 14px;
+            max-width: 260px;
+        }
+        .footer-social {
+            margin-bottom: 14px;
+        }
+        .footer-social a {
+            color: #fff;
+            margin-right: 12px;
+            font-size: 1.3em;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover { color: var(--accent); }
+        .footer-links {
+            margin-bottom: 14px;
+        }
+        .footer-links a {
+            color: #cbd5e1;
+            margin-right: 18px;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copyright {
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 0.95em;
+            margin-top: 18px;
+        }
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .banner, .contact-section { flex-direction: column; gap: 30px; }
+            .banner-content, .banner-img, .contact-img, .contact-form { margin: 0; }
+            .clients-logos, .power-list, .help-cards, .future-cards { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .navbar { flex-direction: column; gap: 12px; padding: 18px 3vw; }
+            .banner, .contact-section { padding: 30px 3vw; }
+            .clients, .power-section, .help-section, .future-section { padding: 30px 3vw; }
+            .footer { padding: 24px 3vw 12px 3vw; }
+            .footer-content { flex-direction: column; gap: 18px; }
+        }
+        @media (max-width: 500px) {
+            .clients-logos, .power-list, .help-cards, .future-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="WhatsApp Image 2025-06-08 at 18.37.15_40e6c5a7.jpg" alt="Logo">
+            Blockchain Landing
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <button class="cta-btn">Sign Up</button>
+        </nav>
+    </div>
+    <!-- Banner -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Empowering the Future with Blockchain</h1>
+            <p>Discover how blockchain technology is revolutionizing industries, ensuring transparency, and building trust for a decentralized tomorrow.</p>
+            <button class="banner-btn">Learn More</button>
+        </div>
+        <div class="banner-img">
+            <img src="WhatsApp Image 2025-06-08 at 18.37.16_3814cc6f.jpg">
+        </div>
+    </section>
+    <!-- Our Client -->
+    <section class="clients">
+        <div class="clients-title">Our Clients</div>
+        <div class="clients-logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Client 1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png" alt="Client 2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="Client 3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="Client 5">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg" alt="Client 6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="Client 7">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg" alt="Client 8">
+        </div>
+    </section>
+    <!-- Power of Blockchain -->
+    <section class="power-section">
+        <div class="power-title">Explore the Power of Blockchain in key Sectors</div>
+        <div class="power-list">
+            <div class="power-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Transparency">
+                <h3>Transparency</h3>
+                <p>All transactions are recorded on a public ledger, ensuring openness and accountability.</p>
+            </div>
+            <div class="power-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Security">
+                <h3>Security</h3>
+                <p>Advanced cryptography protects data, making blockchain highly secure and tamper-proof.</p>
+            </div>
+            <div class="power-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Decentralization">
+                <h3>Decentralization</h3>
+                <p>No single point of control, reducing risks and increasing trust among participants.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Helping Blockchain -->
+    <section class="help-section">
+        <div class="help-title">Helping Blockchain</div>
+        <div class="help-cards">
+            <div class="help-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920261.png" alt="Finance">
+                <h4>Finance</h4>
+                <p>Blockchain is transforming banking, payments, and investments with faster, cheaper, and safer transactions.</p>
+            </div>
+            <div class="help-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920295.png" alt="Healthcare">
+                <h4>Healthcare</h4>
+                <p>Secure patient data sharing and transparent medical supply chains are possible with blockchain.</p>
+            </div>
+            <div class="help-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Supply Chain">
+                <h4>Supply Chain</h4>
+                <p>Track goods from origin to delivery, ensuring authenticity and reducing fraud.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Blockchain Future -->
+    <section class="future-section">
+        <div class="future-title">Blockchain: The Foundation Future</div>
+        <div class="future-cards">
+            <div class="future-card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Future 1">
+                <div class="future-text">Smart Contracts for Automation</div>
+            </div>
+            <div class="future-card">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Future 2">
+                <div class="future-text">Decentralized Finance (DeFi)</div>
+            </div>
+            <div class="future-card">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Future 3">
+                <div class="future-text">NFTs & Digital Ownership</div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Us -->
+    <section class="contact-section">
+        <div class="contact-img">
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920212.png" alt="Contact">
+        </div>
+        <form class="contact-form">
+            <h3>Contact Us</h3>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo"><div class="navbar">
+        <div class="logo">
+            <img src="WhatsApp Image 2025-06-08 at 18.37.15_40e6c5a7.jpg" alt="Logo">
+            
+
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
+        <div class="footer-copyright"> @SadmanAlam
+            © 2024 All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
